@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: libinjection-python
+Version: 1.1.4
+Summary: Libinjection Python Wrapper
+Home-page: https://github.com/wzhvictor/libinjection-python
+Author: wzhvictor
+Author-email: wzhvictor@outlook.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Cython
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools (>=38.3.0)
+Requires-Dist: Cython (>=0.23)
+
+# Libinjection-python
+
+![](https://img.shields.io/badge/license-GPLv3-red.svg)
+![](https://img.shields.io/badge/python-2.7%20%7C%203.4%2B-blue.svg)
+
+Libinjection-python is a wrapper based on Cython for the [Libinjection library](https://github.com/client9/libinjection).
+
+> Libinjection Version: v3.10.0(Released on 22 May 2017)
+
+### Requirements
+- Python 2.7 or 3.4+
+- Cython module (install via pip)
+
+### Installation
+```
+pip install libinjection-python
+```
+
+### Usage
+- Check for SQL Injection
+  ```
+  >> import libinjection
+  >> libinjection.is_sql_injection("http://testphp.vulnweb.com/main.php?SmallClass=' union select * from news where 1=2 and ''='")
+  {'is_sqli': True, 'fingerprint': 'sUEok'}
+  ```
+
+- Check for Cross Site Scripting
+  ```
+  >> import libinjection
+  >> libinjection.is_xss("http://testphp.vulnweb.com/index.php?name=guest<script>alert('attacked')</script>")
+  True
+  ```
+
+### License
+Copyright (c) 2018 wzhvictor
+
+Licensed under the GNU General Public License v3.
+
+![image](https://www.gnu.org/graphics/gplv3-127x51.png)
+
